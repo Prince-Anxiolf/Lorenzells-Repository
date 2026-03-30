@@ -497,8 +497,7 @@ export default function Home() {
                   color="text.secondary" 
                   sx={{ fontSize: '1.1rem', mt: 3, mb: 4 }}
                 >
-                  I create sophisticated web applications that deliver exceptional
-                  user experiences with modern technologies and clean code.
+                  I create amazing games that deliver hours on hours of joy.
                 </Typography>
                 <Box sx={{ display: "flex", gap: 2, mt: 3 }}>
                   <Button
