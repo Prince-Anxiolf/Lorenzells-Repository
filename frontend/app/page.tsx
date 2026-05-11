@@ -260,28 +260,22 @@ export default function Home() {
   // Sample project data - replace with your own
   const projectsData = [
     {
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce solution with React, Node.js, and Stripe integration that handles 10,000+ monthly transactions.",
+      title: "Heroes of Skaihavel",
+      description: "A RPG set in the skies where four Angels journey to recover their stolen power, defeat the demons and corrupt angels, and save the skies.",
       image: "/project1.jpg",
-      technologies: ["React", "Node.js", "MongoDB"],
-      github: "https://github.com/johndoe/ecommerce",
-      demo: "https://ecommerce-demo.example.com"
+      genres: ["RPG", "Single-Player", "Local Co-op"],
     },
     {
-      title: "SaaS Analytics Dashboard",
-      description: "An analytics dashboard for SaaS businesses with real-time data visualization and custom reporting features.",
+      title: "MeleeMages",
+      description: "A MMORPG set in a world where magic is done through hand puppets, and melee combat sits alongside it. Gather puppets and melees, fight beasts and other players, and challenge the High Priests to prove your strengh as the best MeleeMage around!",
       image: "/project2.jpg",
-      technologies: ["Next.js", "TypeScript", "D3.js"],
-      github: "https://github.com/johndoe/saas-dashboard",
-      demo: "https://saas-dashboard.example.com"
+      genres: ["Massively Multiplayer", "RPG", "Adventure"],
     },
     {
-      title: "AI Chat Application",
-      description: "A real-time chat application with AI-powered responses and language translation supporting 20+ languages.",
+      title: "Soulclash Scramble",
+      description: "A 3D Platform Fighter where you and up to three friends can throw hands as one of many original characters.",
       image: "/project3.jpg",
-      technologies: ["React", "Socket.io", "OpenAI API"],
-      github: "https://github.com/johndoe/ai-chat",
-      demo: "https://ai-chat.example.com"
+      genres: ["3D Fighter", "Single-Player", "Local PvP", "Online PvP"],
     },
   ];
 
@@ -654,7 +648,7 @@ export default function Home() {
           <Container maxWidth="md" sx={styles.sectionContainer}>
             {/* Section title */}
             <Typography variant="h3" component="h2" sx={styles.sectionTitle}>
-              Featured Projects
+              Future Projects
             </Typography>
             <Divider sx={styles.divider} />
             
@@ -662,7 +656,7 @@ export default function Home() {
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
               {projectsData.map((project, index) => (
                 <Card key={index} sx={styles.projectCard} elevation={darkMode ? 1 : 2}>
-                  {/* Card content - title, description, technologies */}
+                  {/* Card content - title, description, genres */}
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5" component="h3" fontWeight="bold" gutterBottom>
                       {project.title}
@@ -671,11 +665,14 @@ export default function Home() {
                       {project.description}
                     </Typography>
                     
-                    {/* Technology tags */}
+                    {/* Genres tags */}
+                    <Typography variant="subtitle2" fontWeight={600} color="text.primary" sx={{ mb: 1 }}>
+                      Genres
+                    </Typography>
                     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2 }}>
-                      {project.technologies.map((tech, techIndex) => (
+                      {project.genres.map((genre, genreIndex) => (
                         <Box
-                          key={techIndex}
+                          key={genreIndex}
                           component="span"
                           sx={{
                             px: 1.5,
@@ -687,33 +684,11 @@ export default function Home() {
                             fontWeight: 600,
                           }}
                         >
-                          {tech}
+                          {genre}
                         </Box>
                       ))}
                     </Box>
                   </CardContent>
-                  
-                  {/* Card actions - buttons for code and demo */}
-                  <CardActions sx={{ p: 2, pt: 0 }}>
-                    <Button 
-                      size="small" 
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      startIcon={<FaGithub />}
-                    >
-                      Code
-                    </Button>
-                    <Button 
-                      size="small" 
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="primary"
-                    >
-                      Live Demo
-                    </Button>
-                  </CardActions>
                 </Card>
               ))}
             </Box>
