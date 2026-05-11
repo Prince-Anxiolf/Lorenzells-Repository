@@ -261,7 +261,7 @@ export default function Home() {
   const projectsData = [
     {
       title: "Heroes of Skaihavel",
-      description: "A RPG set in the skies where four Angels journey to recover their stolen power, defeat the demons and corrupt angels, and save the skies.",
+      description: "A RPG set in the skies where four Angels journey to recover their stolen power, defeat the demons and corrupt angels, and save the skies!",
       image: "/project1.jpg",
       genres: ["RPG", "Single-Player", "Local Co-op"],
     },
