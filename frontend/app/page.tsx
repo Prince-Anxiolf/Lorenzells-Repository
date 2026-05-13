@@ -53,11 +53,49 @@ export default function Home() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   // State to track if dark mode is active
   const [darkMode, setDarkMode] = useState(true);
+  // State for Genderize.io input and result
+  const [genderName, setGenderName] = useState('');
+  const [genderResult, setGenderResult] = useState<string | null>(null);
+  const [genderError, setGenderError] = useState<string | null>(null);
+  const [isGenderLoading, setIsGenderLoading] = useState(false);
 
   // Update dark mode when system preference changes
   useEffect(() => {
     setDarkMode(prefersDarkMode);
   }, [prefersDarkMode]);
+
+  const handleGenderCheck = async () => {
+    setGenderResult(null);
+    setGenderError(null);
+
+    const trimmedName = genderName.trim();
+    if (!trimmedName) {
+      setGenderError('Please enter a name.');
+      return;
+    }
+
+    setIsGenderLoading(true);
+    try {
+      const response = await fetch(`https://api.genderize.io?name=${encodeURIComponent(trimmedName)}`);
+      if (!response.ok) {
+        throw new Error('Genderize request failed');
+      }
+
+      const data = await response.json();
+      if (data?.gender) {
+        const confidence = data.probability ? `${Math.round(data.probability * 100)}%` : 'unknown confidence';
+        setGenderResult(`Your name, "${data.name}" is probably ${data.gender} with a ${confidence} chance.`);
+      } else if (data?.name) {
+        setGenderResult(`Your name "${data.name}" unfortunately did not return a gender prediction.`);
+      } else {
+        setGenderError('No result returned from Genderize.');
+      }
+    } catch (error) {
+      setGenderError('Unable to determine gender. Please try again.');
+    } finally {
+      setIsGenderLoading(false);
+    }
+  };
 
   // Create a theme based on dark/light mode preference
   const theme = createTheme({
@@ -1065,6 +1103,80 @@ export default function Home() {
                 </Paper>
               </MuiGrid>
             </MuiGrid>
+          </Container>
+        </Box>
+
+        {/* ===== GENDERIZE SECTION ===== */}
+        <Box
+          component="section"
+          sx={{
+            py: 10,
+            bgcolor: darkMode ? '#081525' : '#eef2ff',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <Container maxWidth="md" sx={styles.sectionContainer}>
+            <Typography variant="h4" component="h2" sx={styles.sectionTitle}>
+              Predict Your Gender Based on Your Name
+            </Typography>
+            <Divider sx={styles.divider} />
+            <Paper
+              elevation={darkMode ? 1 : 3}
+              sx={{
+                p: 4,
+                borderRadius: 4,
+                background: darkMode ? 'rgba(19, 47, 76, 0.55)' : 'rgba(255, 255, 255, 0.95)',
+                backdropFilter: 'blur(10px)',
+                border: darkMode ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.08)',
+              }}
+            >
+              <Typography variant="body1" paragraph sx={{ mb: 3 }}>
+                Enter your first name, press confirm, and I'll fetch the most likely gender from Genderize.io.
+              </Typography>
+
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, alignItems: 'stretch' }}>
+                <TextField
+                  fullWidth
+                  label="First Name"
+                  variant="outlined"
+                  value={genderName}
+                  onChange={(event) => setGenderName(event.target.value)}
+                  placeholder="e.g. Alex"
+                  InputProps={{
+                    sx: {
+                      borderRadius: 2,
+                    },
+                  }}
+                />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleGenderCheck}
+                  disabled={isGenderLoading}
+                  sx={{
+                    py: 1.75,
+                    px: 4,
+                    borderRadius: 2,
+                    minWidth: 160,
+                    background: 'linear-gradient(to right, #3a86ff, #5e60ce)',
+                  }}
+                >
+                  {isGenderLoading ? 'Confirming...' : 'Confirm'}
+                </Button>
+              </Box>
+
+              {genderResult && (
+                <Typography variant="body1" sx={{ mt: 3, color: theme.palette.success.main }}>
+                  {genderResult}
+                </Typography>
+              )}
+              {genderError && (
+                <Typography variant="body1" sx={{ mt: 3, color: theme.palette.error.main }}>
+                  {genderError}
+                </Typography>
+              )}
+            </Paper>
           </Container>
         </Box>
 
