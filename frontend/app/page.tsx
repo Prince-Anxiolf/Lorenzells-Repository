@@ -24,13 +24,11 @@ import { useState, useEffect } from "react"; // For state management and side ef
 import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa"; // Social media icons
 import { HiOutlineMail } from "react-icons/hi"; // Email icon
 import { IoMoon, IoSunny } from "react-icons/io5"; // Theme toggle icons
-import Image from "next/image"; // Next.js optimized Image component
 import {
   AppBar, // Top navigation bar
   Box, // Basic layout container
   Button, // Clickable buttons
   Card, // Card components for projects
-  CardActions, // Bottom section of cards for buttons
   CardContent, // Main content area of cards
   Container, // Centered, width-limited container
   createTheme, // Function to create a theme
@@ -1132,7 +1130,7 @@ export default function Home() {
               }}
             >
               <Typography variant="body1" paragraph sx={{ mb: 3 }}>
-                Enter your first name, press confirm, and I'll fetch the most likely gender from Genderize.io.
+                Enter your first name, press confirm, and I will fetch the most likely gender from Genderize.io.
               </Typography>
 
               <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, alignItems: 'stretch' }}>
