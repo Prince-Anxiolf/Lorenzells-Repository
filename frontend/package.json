@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:unit": "Jest --runInBand",
+    "test:integration": "jest --config jest.integration.config.cjs",
+    "build": "next build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
