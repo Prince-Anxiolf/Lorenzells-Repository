@@ -21,7 +21,7 @@
 
 // Import necessary libraries and components
 import { useState, useEffect } from "react"; // For state management and side effects
-import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa"; // Social media icons
+import { FaGithub, FaTwitter } from "react-icons/fa"; // Social media icons
 import { HiOutlineMail } from "react-icons/hi"; // Email icon
 import { IoMoon, IoSunny } from "react-icons/io5"; // Theme toggle icons
 import {
@@ -101,14 +101,14 @@ export default function Home() {
     palette: {
       mode: darkMode ? 'dark' : 'light', // Overall theme mode
       primary: {
-        main: '#3a86ff', // Primary blue color
+        main: darkMode ? '#e63946' : '#D75F6A', // Primary red color
       },
       secondary: {
-        main: '#ff006e', // Secondary pink color
+        main: darkMode ? '#a100f2' : '#BC56FF', // Secondary purple color
       },
       background: {
-        default: darkMode ? '#0a1929' : '#f8fafc', // Page background
-        paper: darkMode ? '#132f4c' : '#ffffff', // Card/paper background
+        default: darkMode ? '#240808' : '#ffe6e8', // Page background - red
+        paper: darkMode ? '#3d1a4a' : '#f5e6ff', // Card/paper background - purple
       },
     },
     // Typography (font) settings
@@ -164,14 +164,14 @@ export default function Home() {
     // Background gradient for the entire page
     gradientBg: {
       background: darkMode 
-        ? 'linear-gradient(to bottom right, #0a1929, #132f4c)' // Dark mode gradient
-        : 'linear-gradient(to bottom right, #f8fafc, #e2e8f0)', // Light mode gradient
+        ? 'linear-gradient(to bottom right, #240808, #3d1a4a)' // Dark mode gradient
+        : 'linear-gradient(to bottom right, #ffe6e8, #f5e6ff)', // Light mode gradient
       minHeight: '100vh', // Full viewport height
     },
     // Navigation bar styling
     navBar: {
       backdropFilter: 'blur(12px)', // Blur effect
-      backgroundColor: darkMode ? 'rgba(19, 47, 76, 0.8)' : 'rgba(255, 255, 255, 0.8)', // Semi-transparent bg
+      backgroundColor: darkMode ? 'rgba(61, 26, 74, 0.8)' : 'rgba(255, 255, 255, 0.8)', // Semi-transparent bg
       boxShadow: darkMode ? '0 4px 30px rgba(0, 0, 0, 0.1)' : '0 4px 30px rgba(0, 0, 0, 0.05)', // Subtle shadow
       borderRadius: '0px',
     },
@@ -180,7 +180,7 @@ export default function Home() {
       position: 'relative',
       overflow: 'hidden',
       padding: '6rem 0 10rem 0', // Top and bottom padding
-      backgroundColor: darkMode ? '#132f4c' : '#ffffff',
+      backgroundColor: darkMode ? '#3d1a4a' : '#ffffff',
     },
     // Decorative gradient background in hero section
     heroGradient: {
@@ -193,7 +193,7 @@ export default function Home() {
     innerGradient: {
       position: 'absolute',
       inset: 0,
-      background: 'linear-gradient(to right, #3a86ff, #ff006e)', // Blue to pink gradient
+      background: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)', // Red to purple gradient
       transform: 'rotate(12deg) translateX(50%) translateY(33%)', // Tilted and positioned
     },
     // Section title styling
@@ -209,7 +209,7 @@ export default function Home() {
       width: '5rem',
       height: '4px',
       margin: '0.5rem auto 2rem auto',
-      backgroundColor: '#3a86ff', // Blue accent
+      backgroundColor: darkMode ? '#e63946' : '#D75F6A', // Red accent
       borderRadius: '2px',
     },
     // Project card styling
@@ -237,7 +237,7 @@ export default function Home() {
     },
     // Skills progress bar filled area
     skillProgressBar: {
-      backgroundImage: 'linear-gradient(to right, #3a86ff, #5e60ce)', // Blue gradient
+      backgroundImage: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)', // Red to purple gradient
       borderRadius: 4,
     },
     // Technology tag styling (Docker, AWS, etc.)
@@ -264,7 +264,7 @@ export default function Home() {
       marginRight: '1rem',
       transition: 'color 0.2s, transform 0.2s', // Smooth hover animation
       '&:hover': {
-        color: '#3a86ff', // Blue on hover
+        color: darkMode ? '#e63946' : '#D75F6A', // Red on hover
         transform: 'translateY(-3px)', // Lift slightly
       },
     },
@@ -275,7 +275,7 @@ export default function Home() {
     },
     // Profile image styling
     profileImage: {
-      border: darkMode ? '4px solid #132f4c' : '4px solid #ffffff', // Border around image
+      border: darkMode ? '4px solid #3d1a4a' : '4px solid #ffffff', // Border around image
       boxShadow: darkMode 
         ? '0 20px 40px rgba(0, 0, 0, 0.3)' 
         : '0 20px 40px rgba(0, 0, 0, 0.15)', // Shadow under image
@@ -288,7 +288,7 @@ export default function Home() {
       width: 300,
       height: 300,
       borderRadius: '50%', // Circle
-      background: 'linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(255, 0, 110, 0.1))', // Subtle gradient
+      background: 'linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(161, 0, 242, 0.1))', // Subtle red-purple gradient
       zIndex: 0, // Behind content
     },
   };
@@ -357,7 +357,7 @@ export default function Home() {
             <Toolbar sx={{ justifyContent: "space-between" }}>
               {/* Your name/logo */}
               <Typography variant="h6" fontWeight="bold" color="text.primary">
-                <Box component="span" sx={{ color: theme.palette.primary.main }}>John</Box>Doe
+                <Box component="span" sx={{ color: theme.palette.primary.main }}>Lorenzell</Box>Phillips
               </Typography>
               
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -406,7 +406,7 @@ export default function Home() {
                 }}>
                   {/* GitHub link */}
                   <IconButton 
-                    href="https://github.com/johndoe" 
+                    href="https://github.com/Prince-Anxiolf" 
                     target="_blank"
                     rel="noopener noreferrer"
                     color="inherit"
@@ -423,28 +423,9 @@ export default function Home() {
                     <FaGithub />
                   </IconButton>
                   
-                  {/* LinkedIn link */}
-                  <IconButton 
-                    href="https://linkedin.com/in/johndoe" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    color="inherit"
-                    size="small"
-                    sx={{ 
-                      mx: 0.5,
-                      transition: 'transform 0.2s, color 0.2s',
-                      '&:hover': {
-                        color: '#0a66c2',
-                        transform: 'translateY(-3px)'
-                      }
-                    }}
-                  >
-                    <FaLinkedinIn />
-                  </IconButton>
-                  
                   {/* Twitter link */}
                   <IconButton 
-                    href="https://twitter.com/johndoe" 
+                    href="https://twitter.com/TheAxoloDev" 
                     target="_blank"
                     rel="noopener noreferrer"
                     color="inherit"
@@ -503,7 +484,7 @@ export default function Home() {
                     lineHeight: 1.2,
                   }}
                 >
-                  Hi, I&apos;m Lorenzell Phillips
+                  Hey there, I&apos;m Lorenzell Phillips
                   {/* Job title with gradient effect */}
                   <Typography
                     variant="h2"
@@ -514,12 +495,12 @@ export default function Home() {
                     sx={{
                       fontSize: { xs: '2.5rem', md: '3.5rem' },
                       lineHeight: 1.2,
-                      background: 'linear-gradient(to right, #3a86ff, #ff006e)',
+                      background: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                     }}
                   >
-                    Full Stack Developer
+                    Also known as AxoloDev
                   </Typography>
                 </Typography>
                 <Typography 
@@ -538,7 +519,7 @@ export default function Home() {
                       px: 4, 
                       py: 1.5, 
                       borderRadius: 2,
-                      background: 'linear-gradient(to right, #3a86ff, #5e60ce)',
+                      background: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)',
                     }}
                   >
                     Get in Touch
@@ -570,7 +551,7 @@ export default function Home() {
                       inset: 0,
                       borderRadius: '50%',
                       padding: '6px',
-                      background: 'linear-gradient(to right, #3a86ff, #ff006e)',
+                      background: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)',
                       WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                       WebkitMaskComposite: 'xor',
                       maskComposite: 'exclude',
@@ -590,7 +571,7 @@ export default function Home() {
           id="about" 
           sx={{ 
             py: 12, 
-            bgcolor: darkMode ? '#0a1929' : '#f8fafc',
+            bgcolor: darkMode ? '#240808' : '#ffe6e8',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -621,27 +602,16 @@ export default function Home() {
                 border: darkMode ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(0, 0, 0, 0.05)',
               }}
             >
-              {/* About text content */}
+              {/* About text content, Copy and paste this section to add another paragraph */}
               <Typography 
                 variant="body1" 
                 paragraph 
                 sx={{ fontSize: '1.1rem', lineHeight: 1.7 }}
               >
-                With over 5 years of experience in web development, I specialize in creating
-                high-performance, responsive web applications using React, Next.js, and Node.js. My
-                approach combines technical expertise with a strong focus on user experience and clean,
-                maintainable code.
+                With little but growing knowledge of game development, and a huge drive of passion,
+                I am working towards bringing my visions to life, and your screens.
               </Typography>
-              <Typography 
-                variant="body1" 
-                paragraph
-                sx={{ fontSize: '1.1rem', lineHeight: 1.7 }}
-              >
-                Previously, I worked at XYZ Technologies where I led the frontend development team,
-                improving application performance by 40% and implementing CI/CD pipelines that reduced
-                deployment time by 65%. I&apos;m passionate about sharing knowledge and have contributed to
-                several open-source projects.
-              </Typography>
+              
               
               {/* Resume download button */}
               <Box sx={{ mt: 4, display: 'flex', gap: 2, justifyContent: 'center' }}>
@@ -651,7 +621,7 @@ export default function Home() {
                   href="/resume.pdf"
                   target="_blank"
                   sx={{ 
-                    background: 'linear-gradient(to right, #3a86ff, #5e60ce)',
+                    background: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)',
                   }}
                 >
                   Download Resume
@@ -667,7 +637,7 @@ export default function Home() {
           id="projects" 
           sx={{ 
             py: 12, 
-            bgcolor: darkMode ? '#132f4c' : '#ffffff',
+            bgcolor: darkMode ? '#3d1a4a' : '#ffffff',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -713,8 +683,8 @@ export default function Home() {
                           sx={{
                             px: 1.5,
                             py: 0.5,
-                            bgcolor: darkMode ? 'rgba(58, 134, 255, 0.15)' : '#eef6ff',
-                            color: darkMode ? '#90caf9' : '#1565c0',
+                            bgcolor: darkMode ? 'rgba(230, 57, 70, 0.15)' : '#ffe6e8',
+                            color: darkMode ? '#ff7f84' : '#b71c1c',
                             borderRadius: 10,
                             fontSize: '0.75rem',
                             fontWeight: 600,
@@ -737,7 +707,7 @@ export default function Home() {
           id="skills" 
           sx={{ 
             py: 12, 
-            bgcolor: darkMode ? '#0a1929' : '#f8fafc',
+            bgcolor: darkMode ? '#240808' : '#ffe6e8',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -787,7 +757,7 @@ export default function Home() {
                         width: 4,
                         height: 24,
                         borderRadius: 2,
-                        backgroundColor: '#3a86ff',
+                        backgroundColor: darkMode ? '#e63946' : '#D75F6A',
                         marginRight: 2,
                       }
                     }}
@@ -828,7 +798,7 @@ export default function Home() {
                         width: 4,
                         height: 24,
                         borderRadius: 2,
-                        backgroundColor: '#ff006e',
+                        backgroundColor: darkMode ? '#a100f2' : '#BC56FF',
                         marginRight: 2,
                       }
                     }}
@@ -872,7 +842,7 @@ export default function Home() {
                       width: 4,
                       height: 24,
                       borderRadius: 2,
-                      background: 'linear-gradient(to bottom, #3a86ff, #ff006e)',
+                      background: darkMode ? 'linear-gradient(to bottom, #e63946, #a100f2)' : 'linear-gradient(to bottom, #D75F6A, #BC56FF)',
                       marginRight: 2,
                     }
                   }}
@@ -912,7 +882,7 @@ export default function Home() {
           id="contact" 
           sx={{ 
             py: 12, 
-            bgcolor: darkMode ? '#132f4c' : '#ffffff',
+            bgcolor: darkMode ? '#3d1a4a' : '#ffffff',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -958,7 +928,7 @@ export default function Home() {
                       alignItems: 'center',
                       transition: 'color 0.2s, transform 0.2s',
                       '&:hover': {
-                        color: '#3a86ff',
+                        color: darkMode ? '#e63946' : '#D75F6A',
                         transform: 'translateY(-2px)',
                       }
                     }}
@@ -970,7 +940,7 @@ export default function Home() {
                   {/* Social media links */}
                   <Box sx={{ display: 'flex', gap: 2 }}>
                     <IconButton 
-                      href="https://github.com/johndoe" 
+                      href="https://github.com/Prince-Anxiolf" 
                       target="_blank"
                       rel="noopener noreferrer"
                       color="inherit"
@@ -986,23 +956,7 @@ export default function Home() {
                       <FaGithub />
                     </IconButton>
                     <IconButton 
-                      href="https://linkedin.com/in/johndoe" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="inherit"
-                      size="small"
-                      sx={{ 
-                        transition: 'transform 0.2s, color 0.2s',
-                        '&:hover': {
-                          color: '#0a66c2',
-                          transform: 'translateY(-3px)'
-                        }
-                      }}
-                    >
-                      <FaLinkedinIn />
-                    </IconButton>
-                    <IconButton 
-                      href="https://twitter.com/johndoe" 
+                      href="https://twitter.com/TheAxolodev" 
                       target="_blank"
                       rel="noopener noreferrer"
                       color="inherit"
@@ -1086,11 +1040,11 @@ export default function Home() {
                       sx={{ 
                         py: 1.5, 
                         borderRadius: 2,
-                        background: 'linear-gradient(to right, #3a86ff, #5e60ce)',
-                        boxShadow: '0 4px 14px rgba(58, 134, 255, 0.4)',
+                        background: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)',
+                        boxShadow: darkMode ? '0 4px 14px rgba(58, 134, 255, 0.4)' : '0 4px 14px rgba(215, 95, 106, 0.4)',
                         transition: 'all 0.2s ease',
                         '&:hover': {
-                          boxShadow: '0 6px 20px rgba(58, 134, 255, 0.6)',
+                          boxShadow: darkMode ? '0 6px 20px rgba(58, 134, 255, 0.6)' : '0 6px 20px rgba(215, 95, 106, 0.6)',
                           transform: 'translateY(-2px)',
                         }
                       }}
@@ -1109,7 +1063,7 @@ export default function Home() {
           component="section"
           sx={{
             py: 10,
-            bgcolor: darkMode ? '#081525' : '#eef2ff',
+            bgcolor: darkMode ? '#2a0a1a' : '#ffe6e8',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -1157,7 +1111,7 @@ export default function Home() {
                     px: 4,
                     borderRadius: 2,
                     minWidth: 160,
-                    background: 'linear-gradient(to right, #3a86ff, #5e60ce)',
+                    background: darkMode ? 'linear-gradient(to right, #e63946, #a100f2)' : 'linear-gradient(to right, #D75F6A, #BC56FF)',
                   }}
                 >
                   {isGenderLoading ? 'Confirming...' : 'Confirm'}
@@ -1183,7 +1137,7 @@ export default function Home() {
           component="footer"
           sx={{
             py: 4,
-            bgcolor: darkMode ? '#0a1929' : '#f8fafc',
+            bgcolor: darkMode ? '#240808' : '#ffe6e8',
             borderTop: 1,
             borderColor: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)',
           }}
@@ -1198,7 +1152,7 @@ export default function Home() {
               }}
             >
               <Typography variant="body2" color="text.secondary">
-                &copy; {new Date().getFullYear()} John Doe. All rights reserved.
+                &copy; {new Date().getFullYear()} Lorenzell Phillips. All rights reserved.
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ mt: { xs: 2, md: 0 } }}>
                 Designed & Built with ❤️ using React & Material UI
